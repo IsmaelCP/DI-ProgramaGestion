@@ -78,7 +78,7 @@ public class DlgConsultaTickets extends JDialog {
 					String[] arrayfch2 = fecha2.split("-");
 					String fchH = arrayfch2[2]+"-"+arrayfch2[1]+"-"+arrayfch2[0];
 
-					Map fechas = new HashMap();
+					Map<String, Object> fechas = new HashMap<String, Object>();
 					fechas.put("desde", fchD);
 					fechas.put("hasta", fchH);
 
