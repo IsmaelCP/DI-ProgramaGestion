@@ -75,7 +75,7 @@ public class DlgConsultaTickets extends JDialog {
 					String fchD = arrayfch1[2]+"-"+arrayfch1[1]+"-"+arrayfch1[0];
 
 					// Modificar el formato de la fecha hasta
-					String[] arrayfch2 = fecha1.split("-");
+					String[] arrayfch2 = fecha2.split("-");
 					String fchH = arrayfch2[2]+"-"+arrayfch2[1]+"-"+arrayfch2[0];
 
 					Map fechas = new HashMap();
