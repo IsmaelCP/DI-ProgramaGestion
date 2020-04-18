@@ -15,7 +15,7 @@ public class VistaMPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JMenuBar mbarMenuTickets = new JMenuBar();
+	private JMenuBar mbarMenu = new JMenuBar();
 	private JMenu mnArticulos = new JMenu("Art\u00EDculos");
 	private JMenuItem mniAltasArticulos = new JMenuItem("Altas");
 	private JMenuItem mniBajasArticulos = new JMenuItem("Bajas");
@@ -24,6 +24,9 @@ public class VistaMPrincipal extends JFrame {
 	private JMenu mnTickets = new JMenu("Tickets");
 	private JMenuItem mniAltasTickets = new JMenuItem("Altas");
 	private JMenuItem mniConsultasTickets = new JMenuItem("Consultas");
+	private JMenu mnImprimir = new JMenu("iReports");
+	private JMenuItem mniArticulos = new JMenuItem("Informe Art\u00EDculos");
+	private JMenuItem mniTickets = new JMenuItem("Informe Tickets");
 
 	// Declaramos los objetos que vamos a controlar
 	DlgMPrincipalSalir objDlgMPrincSalir = new DlgMPrincipalSalir();
@@ -34,6 +37,8 @@ public class VistaMPrincipal extends JFrame {
 	VistaArticulosConsultas objVArticulosConsultas = new VistaArticulosConsultas();
 	DlgTicketsAltaFecha objDlgTicketsAltaFecha = new DlgTicketsAltaFecha();
 	VistaTicketsConsultas objVTicketsConsultas = new VistaTicketsConsultas();
+	DlgConsultaTickets objDlgConsultaTickets = new DlgConsultaTickets();
+	InformeArticulos informeArtic = new InformeArticulos();
 	Modelo modelo = new Modelo();
 
 	// Constructor 
@@ -46,11 +51,11 @@ public class VistaMPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		mbarMenuTickets.setBounds(0, 0, 97, 21);
-		contentPane.add(mbarMenuTickets);
+		mbarMenu.setBounds(0, 0, 156, 21);
+		contentPane.add(mbarMenu);
 
+		mbarMenu.add(mnArticulos);
 		// Menú Item Altas Artículos
-		mbarMenuTickets.add(mnArticulos);
 		mniAltasArticulos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				objVArticulosAltas.setVisible(true);
@@ -83,8 +88,8 @@ public class VistaMPrincipal extends JFrame {
 		});
 		mnArticulos.add(mniConsultasArticulos);
 
+		mbarMenu.add(mnTickets);
 		// Menú Item Altas Tickets
-		mbarMenuTickets.add(mnTickets);
 		mniAltasTickets.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				objDlgTicketsAltaFecha.setVisible(true);
@@ -99,6 +104,23 @@ public class VistaMPrincipal extends JFrame {
 			}
 		});
 		mnTickets.add(mniConsultasTickets);
+		
+		mbarMenu.add(mnImprimir);	
+		// Menú Item iReport - Artículos
+		mniArticulos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				informeArtic.infoArtic();
+			}
+		});
+		mnImprimir.add(mniArticulos);
+		
+		// Menú Item iReport - Tickets
+		mniTickets.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				objDlgConsultaTickets.setVisible(true);
+			}
+		});
+		mnImprimir.add(mniTickets);
 
 		// Botón Salir del Menú Principal
 		JButton btnSalirMPrinc = new JButton("SALIR");

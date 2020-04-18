@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Modelo 
-{
+public class Modelo {
+
 	public Modelo() {}
 
 	// BASE DE DATOS
@@ -195,7 +195,7 @@ public class Modelo
 	public int idTicket(Connection con)
 	{
 		int id = 0;
-		String obtenerNumTicket = "SELECT numTicket FROM tickets ORDER BY 1 DESC LIMIT 1";
+		String obtenerNumTicket = "SELECT idTicket FROM tickets ORDER BY 1 DESC LIMIT 1";
 		Statement statement = null;
 		//Variable para guardar los datos de la consulta
 		ResultSet rs = null;
@@ -206,41 +206,41 @@ public class Modelo
 			statement = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 			rs = statement.executeQuery(obtenerNumTicket);
 			rs.next();
-			id = rs.getInt("numTicket");
+			id = rs.getInt("idTicket");
 		}
 		catch(SQLException e) {
 			System.out.println("Error en la sentencia SQL  al obtener el último registro de la tabla incluyen");
 		}
 		return id;	
 	}
-	
-	// Método para obtener el último registro de la tabla "incluyen"
-		public int idIcluyen(Connection con)
-		{
-			int id = 0;
-			String obtenerNumTicket = "SELECT idIncluyen FROM incluyen ORDER BY 1 DESC LIMIT 1";
-			Statement statement = null;
-			//Variable para guardar los datos de la consulta
-			ResultSet rs = null;
 
-			// Realizar la consulta
-			try
-			{
-				statement = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-				rs = statement.executeQuery(obtenerNumTicket);
-				rs.next();
-				id = rs.getInt("idIncluyen");
-			}
-			catch(SQLException e) {
-				System.out.println("Error en la sentencia SQL al obtener el último registro de la tabla incluyen");
-			}
-			return id;	
+	// Método para obtener el último registro de la tabla "incluyen"
+	public int idIcluyen(Connection con)
+	{
+		int id = 0;
+		String obtenerNumTicket = "SELECT idIncluyen FROM incluyen ORDER BY 1 DESC LIMIT 1";
+		Statement statement = null;
+		//Variable para guardar los datos de la consulta
+		ResultSet rs = null;
+
+		// Realizar la consulta
+		try
+		{
+			statement = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			rs = statement.executeQuery(obtenerNumTicket);
+			rs.next();
+			id = rs.getInt("idIncluyen");
 		}
+		catch(SQLException e) {
+			System.out.println("Error en la sentencia SQL al obtener el último registro de la tabla incluyen");
+		}
+		return id;	
+	}
 
 	// Método para Modificar un Tickets (Update) - MODIFICACIONES
-	public int modificarTickets(Connection c, int numTicket, double importeTicket)
+	public int modificarTickets(Connection c, int idTicket, double importeTicket)
 	{
-		String sentenciaSQL = "UPDATE tickets SET numTicket = '"+numTicket+"', importeTicket = '"+importeTicket+"' WHERE numTicket="+numTicket;	
+		String sentenciaSQL = "UPDATE tickets SET idTicket = '"+idTicket+"', importeTicket = '"+importeTicket+"' WHERE idTicket="+idTicket;	
 		Statement statement  = null;
 		try
 		{
@@ -256,9 +256,9 @@ public class Modelo
 	}
 
 	// Método para ELIMINAR de la tabla "incluyen" el último registro
-	public int eliminarRegistroIncluyen(Connection c, int numTicket)
+	public int eliminarRegistroIncluyen(Connection c, int idTicket)
 	{
-		String sentenciaSQL = "DELETE FROM incluyen WHERE idTicketFK2 = "+numTicket;
+		String sentenciaSQL = "DELETE FROM incluyen WHERE idTicketFK2 = "+idTicket;
 		Statement statement  = null;
 		try
 		{
@@ -273,9 +273,9 @@ public class Modelo
 	}
 
 	// Método para ELIMINAR de la tabla "tickets" el último registro
-	public int eliminarRegistroTicket(Connection c, int numTicket)
+	public int eliminarRegistroTicket(Connection c, int idTicket)
 	{
-		String sentenciaSQL = "DELETE FROM tickets WHERE numTicket = "+numTicket;
+		String sentenciaSQL = "DELETE FROM tickets WHERE numTicket = "+idTicket;
 		Statement statement  = null;
 		try
 		{
@@ -288,4 +288,5 @@ public class Modelo
 			return 1;
 		}
 	}
+
 }

@@ -123,7 +123,7 @@ public class VistaTicketsAlta extends JFrame {
 				// Mostrar en txtAgregarTickets el artículo, la cantidad y el subtotal
 				txtAgregarTickets.setText(txtAgregarTickets.getText()+"\n"+artElegidoTck+ " / " + cantidadMostrar+ " / " + df.format(subtotal)+"€");
 
-				// 3. Realizar un INSERT en la tabla "incluyen" --> idArticuloFK1, idTicketFK2 y Cantidad
+				// 3. Realizar un INSERT en la tabla "incluyen" --> idArticuloFK1 y idTicketFK2
 				try
 				{			
 					// Obtener el id del artículo elegido en el chcArticulosTickets 
@@ -136,7 +136,7 @@ public class VistaTicketsAlta extends JFrame {
 					numTicket = modelo.idTicket(con);
 
 					// Realizar el INSERT en la tabla "incluyen"
-					String sentenciaSQL = "INSERT INTO incluyen VALUES(null, '"+idArt+"', '"+numTicket+"', '"+cantidadMostrar+"' )";   
+					String sentenciaSQL = "INSERT INTO incluyen VALUES(null, '"+idArt+"', '"+numTicket+"')";   
 					Statement statement = null;
 					try {
 						statement = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
