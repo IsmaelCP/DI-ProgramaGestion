@@ -11,7 +11,7 @@ public class Principal {
 
 	/**
 	 * Declara la Clase VistaMPrincipal y la hace visible
-	 * @param args
+	 * @param args argumento del método main para enviar valores al programa
 	 */
 	public static void main(String[] args) {
 		// Declaramos los objetos que vamos a controlar: VistaMPrincipal

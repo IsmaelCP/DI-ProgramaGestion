@@ -19,8 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 /**
- * Crea la vista Modificar_Artículos
- * Crea el diálogo Confirmar_Modificaciones Artículos
+ * Crea la vista Modificar_Artículos y el diálogo Confirmar_Modificaciones Artículos
  * @author Ismael
  */
 public class VistaArticulosModif2 extends JFrame implements WindowListener, ActionListener{

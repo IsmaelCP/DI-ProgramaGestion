@@ -21,6 +21,7 @@ import net.sf.jasperreports.view.JasperViewer;
 public class InformeArticulos {
 
 	/**
+	 * <b>Genera el informe Listado de Artículos</b>
 	 * Compila el informe con la plantilla tickets.jrxml generando un fichero jasper
 	 * Carga el informe compilado
 	 * Conecta con la BD para obtener la información de los artículos

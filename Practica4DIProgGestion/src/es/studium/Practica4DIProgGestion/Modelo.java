@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Realiza la conexión con la BD tiendecita 
- * Contiene los métodos que interactúan con la BD
+ * Realiza la conexión con la BD tiendecita y contiene los métodos que interactúan con la BD
  * @author Ismael
  */
 public class Modelo {
