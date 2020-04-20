@@ -10,11 +10,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea la vista Mensaje Error_Modificaciones
+ * @author Ismael
+ */
 public class DlgArticMensajeErrorModif extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public DlgArticMensajeErrorModif() {
 		setTitle("Mensaje Error_Modificaciones");
 		setBounds(100, 100, 244, 164);

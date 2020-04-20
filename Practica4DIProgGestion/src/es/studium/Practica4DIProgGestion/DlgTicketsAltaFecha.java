@@ -19,17 +19,29 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea la vista Mensaje Fecha Alta Tickets
+ * @author Ismael
+ */
 public class DlgTicketsAltaFecha extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtFechaTck;
 
-	// Objetos que vamos a controlar
+	/**
+	 * Declara los objetos que controla
+	 * VistaTicketsAlta
+	 * DlgTicketsMensajeErrorFecha
+	 * Modelo
+	 */
 	VistaTicketsAlta objVAltaTickets = new VistaTicketsAlta();
 	DlgTicketsMensajeErrorFecha objDlgTicketsMensajeErrorFecha = new DlgTicketsMensajeErrorFecha();
 	Modelo modelo = new Modelo();
 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public DlgTicketsAltaFecha() {
 		setTitle("Mensaje Fecha Alta Tickets");
 		setBounds(100, 100, 268, 184);

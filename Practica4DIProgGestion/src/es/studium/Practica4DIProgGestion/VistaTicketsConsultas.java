@@ -8,11 +8,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea la vista Consultas_Tickets
+ * @author Ismael
+ */
 public class VistaTicketsConsultas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public VistaTicketsConsultas() {
 		setTitle("Consultas_Tickets");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

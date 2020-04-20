@@ -19,20 +19,32 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea la vista Alta_Tickets
+ * @author Ismael
+ */
 public class VistaTicketsAlta extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	protected static final AbstractButton txtAgregarTicktes = null;
 	private JPanel contentPane;
 	private JTextField txtCantTickets;
-
-	// Objetos que vamos a controlar
-	DlgTicketsMensajeAlta objDlgTicketsMensajeAlta = new DlgTicketsMensajeAlta();
-	DlgTicketsMensajeErrorAlta objDlgTicketsMensajeErrorAlta = new DlgTicketsMensajeErrorAlta();
-	Modelo modelo = new Modelo();
 	private JTextField txtTotalTck;
 	double total = 0;
 
+	/**
+	 * Declara los objetos que controla
+	 * DlgTicketsMensajeAlta
+	 * DlgTicketsMensajeErrorAlta
+	 * Modelo
+	 */
+	DlgTicketsMensajeAlta objDlgTicketsMensajeAlta = new DlgTicketsMensajeAlta();
+	DlgTicketsMensajeErrorAlta objDlgTicketsMensajeErrorAlta = new DlgTicketsMensajeErrorAlta();
+	Modelo modelo = new Modelo();
+
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public VistaTicketsAlta() {
 		setTitle("Alta_Tickets");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -90,10 +102,12 @@ public class VistaTicketsAlta extends JFrame {
 		txtAgregarTickets.setBounds(102, 119, 381, 125);
 		contentPane.add(txtAgregarTickets);
 
-		// Botón Agregar. Acción --> 
-		// 1. Agrega el artículo, la cantidad y el subtotal en el txtAgregarTickets
-		// 2. Sumar los subtotales y mostrarlos en el txtTotalTck
-		// 3. Realizar un INSERT en la tabla "incluyen" --> idArticuloFK1, idTicketFK2 y Cantidad
+		/**
+		 * Acción del botón Agregar:
+		 * 1. Agrega el artículo, la cantidad y el subtotal en el txtAgregarTickets
+		 * 2. Suma los subtotales y mostrarlos en el txtTotalTck
+		 * 3. Realiza un INSERT en la tabla "incluyen" --> idArticuloFK1, idTicketFK2 y Cantidad
+		 */
 		JButton btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -161,8 +175,10 @@ public class VistaTicketsAlta extends JFrame {
 		contentPane.add(btnAgregar);
 
 
-		// Botón Finalizar Ticket. Acción --> 
-		// Agrega en la tabla "tickets" el importe total en la columna "importeTicket"  
+		/**
+		 * Acción del botón Finalizar:
+		 * Agrega en la tabla "tickets" el importe total en la columna "importeTicket"  
+		 */
 		JButton btnAceptarAltaTickets = new JButton("Finalizar Ticket");
 		btnAceptarAltaTickets.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -174,18 +190,18 @@ public class VistaTicketsAlta extends JFrame {
 					// Con la siguiente línea elimino el símbolo del €
 					String cadena = imp.substring(0, imp.length()-1);
 					double importeTotal = Double.parseDouble(cadena);
-					
+
 
 					// Obtener el numTicket creado
 					int numTicket = 0;
 					Connection con = null;
 					con = modelo.conectar();
 					numTicket = modelo.idTicket(con);
-					
+
 					// Realizar UPDATE desde el método modificarTickets en el Modelo
 					modelo.modificarTickets(con, numTicket, importeTotal);
 					modelo.desconectar(con);
-					
+
 					// Mensaje de Alta realiza correctamente
 					objDlgTicketsMensajeAlta.setVisible(true);
 				}
@@ -220,10 +236,12 @@ public class VistaTicketsAlta extends JFrame {
 		btnLimpiarAltaTickets.setBounds(216, 309, 89, 23);
 		contentPane.add(btnLimpiarAltaTickets);
 
-		// Botón Cancelar Ticket. Acción --> 
-		// 1. Elimina el registro de la tabla "incluyen" con el idTicketFK2 
-		// 2. Elimina el último registro creado de la tabla "tickets" 
-		// 3. Cierra la ventana Alta Tickets
+		/**
+		 * Acción del botón Cancelar:
+		 * 1. Elimina el registro de la tabla "incluyen" con el idTicketFK2 
+		 * 2. Elimina el último registro creado de la tabla "tickets" 
+		 * 3. Cierra la ventana Alta Tickets
+		 */
 		JButton btnVolverAltaTickets = new JButton("Cancelar Ticket");
 		btnVolverAltaTickets.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -235,7 +253,7 @@ public class VistaTicketsAlta extends JFrame {
 					Connection con = null;
 					con = modelo.conectar();
 					numTicket = modelo.idTicket(con);
-					
+
 					// Realizar DELETE desde el método modificarTickets en el Modelo
 					modelo.eliminarRegistroIncluyen(con, numTicket);
 					modelo.desconectar(con);
@@ -253,7 +271,7 @@ public class VistaTicketsAlta extends JFrame {
 					Connection con = null;
 					con = modelo.conectar();
 					numTicket = modelo.idTicket(con);
-					
+
 					// Realizar DELETE desde el método modificarTickets en el Modelo
 					modelo.eliminarRegistroTicket(con, numTicket);
 					modelo.desconectar(con);
@@ -262,7 +280,7 @@ public class VistaTicketsAlta extends JFrame {
 				{
 					ex.printStackTrace();				
 				}	
-				
+
 				// 3. Cierra la ventana VistaTicketsAlta
 				dispose();
 			}

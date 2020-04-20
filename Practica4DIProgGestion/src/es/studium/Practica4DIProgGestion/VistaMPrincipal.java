@@ -11,6 +11,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea la vista Menú Principal
+ * @author Ismael
+ */
 public class VistaMPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -27,8 +31,21 @@ public class VistaMPrincipal extends JFrame {
 	private JMenu mnImprimir = new JMenu("iReports");
 	private JMenuItem mniArticulos = new JMenuItem("Informe Art\u00EDculos");
 	private JMenuItem mniTickets = new JMenuItem("Informe Tickets");
-
-	// Declaramos los objetos que vamos a controlar
+	
+	/**
+	 * Declara los objetos que controla
+	 * DlgMPrincipalSalir
+	 * AyudaMPrincipal
+	 * VistaArticulosAltas
+	 * VistaArticulosBajas
+	 * VistaArticulosModif1
+	 * VistaArticulosConsultas
+	 * DlgTicketsAltaFecha
+	 * VistaTicketsConsultas
+	 * DlgConsultaTickets
+	 * InformeArticulos
+	 * Modelo
+	 */
 	DlgMPrincipalSalir objDlgMPrincSalir = new DlgMPrincipalSalir();
 	AyudaMPrincipal objAyudaMPrinc = new AyudaMPrincipal();
 	VistaArticulosAltas objVArticulosAltas = new VistaArticulosAltas();
@@ -41,7 +58,9 @@ public class VistaMPrincipal extends JFrame {
 	InformeArticulos informeArtic = new InformeArticulos();
 	Modelo modelo = new Modelo();
 
-	// Constructor 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public VistaMPrincipal() {
 		setTitle("Men\u00FA Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

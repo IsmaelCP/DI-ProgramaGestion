@@ -10,11 +10,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea la vista Mensaje Error_Baja
+ * @author Ismael
+ */
 public class DlgArticMensajeErrorBaja extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public DlgArticMensajeErrorBaja() {
 		setTitle("Mensaje Error_Baja");
 		setBounds(100, 100, 251, 165);

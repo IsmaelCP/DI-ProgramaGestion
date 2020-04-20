@@ -10,11 +10,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea el diálogo Mensaje_Baja
+ * @author Ismael
+ */
 public class DlgArticMensajeBaja extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public DlgArticMensajeBaja() {
 		setTitle("Mensaje_Baja");
 		setBounds(100, 100, 258, 163);

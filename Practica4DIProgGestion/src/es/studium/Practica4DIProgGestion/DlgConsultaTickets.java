@@ -26,6 +26,10 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+/**
+ * Crea la vista Consulta Tickets
+ * @author Ismael
+ */
 public class DlgConsultaTickets extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -33,6 +37,9 @@ public class DlgConsultaTickets extends JDialog {
 	private JTextField txtFchDesde;
 	private JTextField txtFchHasta;
 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public DlgConsultaTickets() {
 		setTitle("Consulta Tickets");
 		setBounds(100, 100, 290, 194);
@@ -61,6 +68,18 @@ public class DlgConsultaTickets extends JDialog {
 		txtFchHasta.setBounds(127, 59, 94, 20);
 		contentPanel.add(txtFchHasta);
 
+		/**
+		 * <b>Genera el informe Listado de Tickets</b>
+		 * Acción del botón Aceptar:
+		 * Compila el informe con la plantilla tickets.jrxml generando un fichero jasper
+		 * Carga el informe compilado
+		 * Conecta con la BD para obtener la información de los tickets entre las fechas dadas
+		 * Completa el informe con los datos obtenidos de la BD
+		 * Obtiene el informe en JasperViewer
+		 * Exporta en informe a pdf
+		 * Abre el informe en un fichero pdf 
+		 * @see <a href="https://juanmancilla.wordpress.com/2013/08/07/solucion-de-consulta-de-dos-fechas-para-reporte-de-ireport/"> iReport_Reporte de consulta entre dos fechas</a>
+		 */
 		JButton btnAceptar = new JButton("ACEPTAR");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -71,14 +90,14 @@ public class DlgConsultaTickets extends JDialog {
 					String fecha2 = txtFchHasta.getText();
 
 					// Modificar el formato de la fecha desde
-					String[] arrayfch1 = fecha1.split("-");
+					String[] arrayfch1 = fecha2.split("-");
 					String fchD = arrayfch1[2]+"-"+arrayfch1[1]+"-"+arrayfch1[0];
 
 					// Modificar el formato de la fecha hasta
-					String[] arrayfch2 = fecha2.split("-");
+					String[] arrayfch2 = fecha1.split("-");
 					String fchH = arrayfch2[2]+"-"+arrayfch2[1]+"-"+arrayfch2[0];
 
-					Map<String, Object> fechas = new HashMap<String, Object>();
+					Map fechas = new HashMap();
 					fechas.put("desde", fchD);
 					fechas.put("hasta", fchH);
 

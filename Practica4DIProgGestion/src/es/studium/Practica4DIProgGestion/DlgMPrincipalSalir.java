@@ -10,11 +10,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea el diálogo Salir
+ * @author Ismael
+ */
 public class DlgMPrincipalSalir extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public DlgMPrincipalSalir() {
 		setTitle("Salir");
 		setBounds(100, 100, 271, 160);
@@ -54,5 +61,4 @@ public class DlgMPrincipalSalir extends JDialog {
 			btnNoSalir.setActionCommand("Cancel");
 		}
 	}
-
 }

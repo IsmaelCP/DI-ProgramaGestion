@@ -6,13 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Realiza la conexión con la BD tiendecita 
+ * Contiene los métodos que interactúan con la BD
+ * @author Ismael
+ */
 public class Modelo {
 
-	public Modelo() {}
-
-	// BASE DE DATOS
-
-	// Método para conectar con la BD
+	/**
+	 * Conecta con la BD 
+	 * @return devuelve el resultado de la conexión a la BD
+	 */
 	public Connection conectar()
 	{
 		String driver = "com.mysql.jdbc.Driver";
@@ -40,7 +44,10 @@ public class Modelo {
 		return connection;
 	}
 
-	// Método para desconectar la conexión de la BD
+	/**
+	 * Realiza la desconexión a la BD 
+	 * @param c conexión con la BD
+	 */
 	public void desconectar(Connection c)
 	{
 		try
@@ -55,10 +62,11 @@ public class Modelo {
 		}
 	}
 
-
-	// ARTÍCULOS
-
-	// Método para CONSULTAR los datos de la tabla "articulos"
+	/**
+	 * Consulta los datos de la tabla -articulos-
+	 * @param c conexión con la BD
+	 * @return devuelve los registros de la tabla -articulos- mostrando los campos idArticulos, descripcionArticulo, precioArticulo, cantidadArticulo
+	 */
 	public ResultSet consultaArticulos(Connection c)
 	{
 		// consulta = todos los datos de la tabla "articulos"
@@ -79,7 +87,12 @@ public class Modelo {
 		return rs;	
 	}
 
-	// Método para ELIMINAR un Artículo
+	/**
+	 * Elimina un artículo de la tabla -articulos-
+	 * @param c conexión con la BD
+	 * @param idArticulos se le pasa el idArticulos a eliminar
+	 * @return devuelve 0 si realiza la baja en la BD con éxito o 1 si no se ha realizado 
+	 */
 	public int eliminarArticulo(Connection c, int idArticulos)
 	{
 		String sentenciaSQL = "DELETE FROM articulos WHERE idArticulos = "+idArticulos;
@@ -96,28 +109,15 @@ public class Modelo {
 		}
 	}
 
-	// Método para "obtener los datos" del artículo elegido en el choice chcArticuloModif1
-	public ResultSet datosArticulo(Connection con, int idArticulos)
-	{
-		String consultaArticulos = "SELECT descripcionArticulo, precioArticulo, cantidadArticulo FROM articulos WHERE idArticulos = "+idArticulos;
-		Statement statement = null;
-		// Variable para guardar los datos de la consulta
-		ResultSet rs = null;
-
-		// Realizar la consutla
-		try
-		{
-			statement = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			rs = statement.executeQuery(consultaArticulos);
-			rs.next();	
-		}
-		catch(SQLException e) {
-			System.out.println("Error en la sentencia SQL");
-		}
-		return rs;	
-	}
-
-	// Método para Modificar un Artículo (Update) - MODIFICACIONES
+	/**
+	 * Modifica un artículo de la tabla -articulos- 
+	 * @param c conexión con la BD
+	 * @param idArticulos int correspondiente al idArticulos del artículo elegido
+	 * @param descripcionArticulo String correspondiente a la descripción 
+	 * @param precioArticulo double correspondiente al precio
+	 * @param cantidadArticulo int correspondiente a la cantidad
+	 * @return devuelve 0 si realiza la modificación en la BD con éxito o 1 si no se ha realizado 
+	 */
 	public int modificarArticulo(Connection c, int idArticulos, String descripcionArticulo, double precioArticulo, int cantidadArticulo)
 	{
 		String sentenciaSQL = "UPDATE articulos SET idArticulos = '"+idArticulos+"', descripcionArticulo = '"+descripcionArticulo+"', precioArticulo = '"+precioArticulo+"', cantidadArticulo = '"+cantidadArticulo+"' WHERE idArticulos="+idArticulos;	
@@ -135,7 +135,10 @@ public class Modelo {
 		}
 	}
 
-	// Método para obtener los datos para VistaArticulosConsultas
+	/**
+	 * Obtiene los datos de los registros de la tabla -articulos-
+	 * @return devuelve un String con los datos 
+	 */
 	public String montarVistaArticulosConsultas()
 	{				
 		ResultSet consulArticulos = null;
@@ -167,31 +170,11 @@ public class Modelo {
 		return resultado;
 	}
 
-
-	// TICKETS
-
-	// Método para Consultar la descripción del artículo elegido en choice de Alta_Tickets
-	public ResultSet descripArt(Connection con, int idArticulos)
-	{
-		String consultaArticulos = "SELECT descripcionArticulo, precioArticulo FROM articulos WHERE idArticulos = "+idArticulos;
-		Statement statement = null;
-		// Variable para guardar los datos de la consulta
-		ResultSet rs = null;
-
-		// Realizar la consulta
-		try
-		{
-			statement = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			rs = statement.executeQuery(consultaArticulos);
-			rs.next();	
-		}
-		catch(SQLException e) {
-			System.out.println("Error en la sentencia SQL");
-		}
-		return rs;	
-	}
-
-	// Método para obtener el último registro de la tabla "tickets"
+	/**
+	 * Obtiene el último registro de la tabla -tickets-
+	 * @param con conexión con la BD
+	 * @return devuelve un int con el idTicket
+	 */
 	public int idTicket(Connection con)
 	{
 		int id = 0;
@@ -214,7 +197,11 @@ public class Modelo {
 		return id;	
 	}
 
-	// Método para obtener el último registro de la tabla "incluyen"
+	/**
+	 * Obtiene el último registro de la tabla -incluyen-
+	 * @param con conexión con la BD
+	 * @return devuelve un int con el idIncluyen
+	 */
 	public int idIcluyen(Connection con)
 	{
 		int id = 0;
@@ -237,7 +224,13 @@ public class Modelo {
 		return id;	
 	}
 
-	// Método para Modificar un Tickets (Update) - MODIFICACIONES
+	/**
+	 * Modifica un registro de la tabla -tickets-
+	 * @param c conexión con la BD
+	 * @param idTicket int correspondiente al idTicket del ticket elegido
+	 * @param importeTicket double correspondiente al importeTicket elegido
+	 * @return devuelve 0 si realiza la modificación en la BD con éxito o 1 si no se ha realizado 
+	 */
 	public int modificarTickets(Connection c, int idTicket, double importeTicket)
 	{
 		String sentenciaSQL = "UPDATE tickets SET idTicket = '"+idTicket+"', importeTicket = '"+importeTicket+"' WHERE idTicket="+idTicket;	
@@ -255,7 +248,12 @@ public class Modelo {
 		}
 	}
 
-	// Método para ELIMINAR de la tabla "incluyen" el último registro
+	/**
+	 * Elimina un registro de la tabla -incluyen-
+	 * @param c conexión con la BD
+	 * @param idTicket int correspondiente al idTicket del ticket elegido
+	 * @return devuelve 0 si elimina el registro en la BD con éxito o 1 si no se ha realizado 
+	 */
 	public int eliminarRegistroIncluyen(Connection c, int idTicket)
 	{
 		String sentenciaSQL = "DELETE FROM incluyen WHERE idTicketFK2 = "+idTicket;
@@ -272,7 +270,12 @@ public class Modelo {
 		}
 	}
 
-	// Método para ELIMINAR de la tabla "tickets" el último registro
+	/**
+	 * Elimina un registro de la tabla -tickets-
+	 * @param c conexión con la BD
+	 * @param idTicket int correspondiente al idTicket del ticket elegido
+	 * @return devuelve 0 si elimina el registro en la BD con éxito o 1 si no se ha realizado 
+	 */
 	public int eliminarRegistroTicket(Connection c, int idTicket)
 	{
 		String sentenciaSQL = "DELETE FROM tickets WHERE numTicket = "+idTicket;
@@ -288,5 +291,4 @@ public class Modelo {
 			return 1;
 		}
 	}
-
 }

@@ -18,6 +18,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea la vista Modificar_Artículos
+ * Crea el diálogo Confirmar_Modificaciones Artículos
+ * @author Ismael
+ */
 public class VistaArticulosModif2 extends JFrame implements WindowListener, ActionListener{
 
 	private static final long serialVersionUID = 1L;
@@ -28,17 +33,27 @@ public class VistaArticulosModif2 extends JFrame implements WindowListener, Acti
 	JTextField txtCantModif2;
 	JLabel idArticulosModif1 = new JLabel("idArticulo");
 
-	// Objetos que vamos a controlar
+	/**
+	 * Declara los objetos que controla
+	 * DlgArticMensajeModif
+	 * DlgArticMensajeErrorModif
+	 * Modelo
+	 */
 	DlgArticMensajeModif objDlgArticMensajeModif = new DlgArticMensajeModif();
 	DlgArticMensajeErrorModif objDlgArticMensajeErrorModif = new DlgArticMensajeErrorModif();
 	Modelo modelo = new Modelo();
 
-	// Diálogo Confirmar_Modificaciones Articulo
+	/**
+	 * Constructor sin parámetros 
+	 */
 	Dialog dlgConfModif = new Dialog(this, "Confirmar Baja", true);
 	Label lblConfModif = new Label("Confirmar la modificaciones del artículo");
 	Button btnConfModifSi = new Button("SI");
 	Button btnConfModifNo = new Button("NO");
 
+	/**
+	 * Controlador de la Clase VistaArticulosModif2
+	 */
 	public VistaArticulosModif2() {
 		setTitle("Modificar_Art\u00EDculos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

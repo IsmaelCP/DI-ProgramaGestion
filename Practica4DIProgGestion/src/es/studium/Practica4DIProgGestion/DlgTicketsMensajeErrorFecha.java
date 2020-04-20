@@ -11,11 +11,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea la vista Mensaje Error_Fecha Tickets
+ * @author Ismael
+ */
 public class DlgTicketsMensajeErrorFecha extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public DlgTicketsMensajeErrorFecha() {
 		setTitle("Mensaje Error_Fecha Tickets");
 		setBounds(100, 100, 341, 164);

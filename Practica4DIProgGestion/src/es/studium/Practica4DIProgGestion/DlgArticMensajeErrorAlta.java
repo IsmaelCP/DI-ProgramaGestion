@@ -10,11 +10,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea la vista Mensaje Error_Alta
+ * @author Ismael
+ */
 public class DlgArticMensajeErrorAlta extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public DlgArticMensajeErrorAlta() {
 		setTitle("Mensaje Error_Alta");
 		setBounds(100, 100, 244, 164);

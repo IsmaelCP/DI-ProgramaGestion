@@ -10,11 +10,18 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea el diálogo Ayuda
+ * @author Ismael
+ */
 public class AyudaMPrincipal extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public AyudaMPrincipal() {
 		setTitle("Ayuda");
 		setBounds(100, 100, 450, 300);

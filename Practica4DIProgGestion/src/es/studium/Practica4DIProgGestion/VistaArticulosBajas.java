@@ -20,23 +20,38 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea la vista Baja_Artículos
+ * Crea el diálogo Confirmar_Baja Artículo
+ * @author Ismael
+ */
 public class VistaArticulosBajas extends JFrame implements WindowListener, ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPane;
 	Choice chcArticuloBajas;
 
-	// Objetos que vamos a controlar
+	/**
+	 * Declara los objetos que controla
+	 * DlgArticMensajeBaja
+	 * DlgArticMensajeErrorBaja
+	 * Modelo
+	 */
 	DlgArticMensajeBaja objDlgArticMensajeBaja = new DlgArticMensajeBaja();
 	DlgArticMensajeErrorBaja objDlgArticMensajeErrorBaja = new DlgArticMensajeErrorBaja();
 	Modelo modelo = new Modelo();
 
-	// Diálogo Confirmar_Baja Articulo
+	/**
+	 * Constructor sin parámetros 
+	 */
 	Dialog dlgConfBaja = new Dialog(this, "Confirmar Baja", true);
 	Label lblConfBaja = new Label("Confirmar la baja del artículo");
 	Button btnConfBajaSi = new Button("SI");
 	Button btnConfBajaNo = new Button("NO");
 
+	/**
+	 * Controlador de la Clase VistaArticulosBajas
+	 */
 	public VistaArticulosBajas() {
 		setTitle("Baja_Art\u00EDculos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

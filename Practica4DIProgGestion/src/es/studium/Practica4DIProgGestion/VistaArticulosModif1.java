@@ -14,15 +14,26 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea la vista Modificación_Artículos
+ * @author Ismael
+ */
 public class VistaArticulosModif1 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	// Objetos que vamos a controlar
+	/**
+	 * Declara los objetos que controla
+	 * VistaArticulosModif2
+	 * Modelo
+	 */
 	VistaArticulosModif2 objVistaArticulosModif2 = new VistaArticulosModif2();
 	Modelo modelo = new Modelo();
 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public VistaArticulosModif1() {
 		setTitle("Modificaci\u00F3n_Art\u00EDculos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

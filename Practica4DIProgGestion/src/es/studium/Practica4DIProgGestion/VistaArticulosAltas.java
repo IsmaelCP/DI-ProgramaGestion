@@ -15,6 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Crea la vista Altas_Artículos
+ * @author Ismael
+ */
 public class VistaArticulosAltas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -23,11 +27,19 @@ public class VistaArticulosAltas extends JFrame {
 	private JTextField txtPrecioAlta;
 	private JTextField txtCantAlta;
 
-	// Objetos que vamos a controlar
+/**
+ * Declara los objetos que controla
+ * DlgArticMensajeAlta
+ * DlgArticMensajeErrorAlta
+ * Modelo
+ */
 	DlgArticMensajeAlta objDlgArticMensajeAlta = new DlgArticMensajeAlta();
 	DlgArticMensajeErrorAlta objDlgArticMensajeErrorAlta = new DlgArticMensajeErrorAlta();
 	Modelo modelo = new Modelo();
 
+	/**
+	 * Constructor sin parámetros 
+	 */
 	public VistaArticulosAltas() {
 		setTitle("Altas_Art\u00EDculos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -120,5 +132,4 @@ public class VistaArticulosAltas extends JFrame {
 		btnVolverAlta.setBounds(281, 114, 89, 23);
 		contentPane.add(btnVolverAlta);
 	}
-
 }
